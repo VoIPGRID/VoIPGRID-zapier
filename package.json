@@ -1,0 +1,29 @@
+{
+  "name": "VoIPGRID",
+  "version": "1.0.0",
+  "description": "Zapier integration with the VoIPGRID platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --recursive -t 10000"
+  },
+  "engines": {
+    "node": ">=6.10.0",
+    "npm": ">=3.0.0"
+  },
+  "dependencies": {
+    "lodash": "4.17.11",
+    "zapier-platform-core": "7.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "4.0.1",
+    "should": "13.1.2"
+  },
+  "private": true,
+  "zapier": {
+    "convertedFromAppID": 96580,
+    "convertedByCLIVersion": "7.2.0"
+  }
+}
