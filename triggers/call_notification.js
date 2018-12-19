@@ -37,6 +37,9 @@ const callNotification = {
 
 /**
  * Performs the subscription to the platform.
+ * This function gets called from the Zapier platform to create a hook for our
+ * call notifications.
+ *
  * @param z The Z object
  * @param bundle Has the necessary information of the hook to call.
  * @returns {Promise<T | never>
@@ -44,6 +47,9 @@ const callNotification = {
 const subscribeHook = (z, bundle) => {
   // bundle.targetUrl has the Hook URL this app should call when a new
   // call notification event occurs.
+  if (!bundle.targetUrl) {
+    throw new Error('Zapier didn\'t provide a valid URL to call');
+  }
   const data = {
     target_url: bundle.targetUrl,
     event: 'custom',
@@ -61,11 +67,22 @@ const subscribeHook = (z, bundle) => {
 
   // You may return a promise or a normal data structure from any perform method.
   return z.request(options)
-    .then(response => JSON.parse(response.content));
+    .then((response) => {
+      if (response.status === 403) {
+        z.console.log('403 Not the correct rights');
+        throw new Error('Do you have the correct rights?');
+      }
+      if (!response.content) {
+        return '{}';
+      }
+      return JSON.parse(response.content);
+    });
 };
 
 /**
  * Performs the unsubscription to the platform.
+ * This function gets called from the Zapier platform to remove a hook from our
+ * call notifications.
  * @param z The Z object.
  * @param bundle Contains the hookId to which to unsubscribe.
  * @returns {Promise<void | never>}
