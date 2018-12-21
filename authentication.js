@@ -11,22 +11,28 @@ zapier.tools.env.inject();
  * @param bundle An object containing metadata and auth data.
  * @returns {Promise<T | never>}
  */
-const test = (z, bundle) => z.request({
-  url: `${process.env.PLATFORM_URL}/api/permission/systemuser/profile/`,
-  headers: {
-    Authorization: `Token ${bundle.authData.email}:${bundle.authData.token}`,
-  },
-}).then((response) => {
-  if (response.status === 401) {
-    z.console.log('Oops, got a 401');
-    throw new Error('The username and/or password you supplied is incorrect');
-  } else if (response.status === 403) {
-    z.console.log('This url is forbidden');
-    throw new Error('You are not allowed to access this URL');
-  }
-  z.console.log(response);
-  return response;
-});
+const test = (z, bundle) => {
+  z.request({
+    url: `${process.env.PLATFORM_URL}/api/permission/systemuser/profile/`,
+    headers: {
+      Authorization: `Token ${bundle.authData.email}:${bundle.authData.token}`,
+    },
+  }).then((response) => {
+    if (response.status === 400) {
+      z.console.log('A bad request status happened while trying the URL');
+      throw new Error('400 Bad request');
+    }
+    else if (response.status === 401) {
+      z.console.log('Oops, got a 401');
+      throw new Error('The username and/or password you supplied is incorrect');
+    } else if (response.status === 403) {
+      z.console.log('This url is forbidden');
+      throw new Error('You are not allowed to access this URL');
+    }
+    z.console.log(response);
+    return response;
+  });
+};
 
 /**
  * See: https://zapier.github.io/zapier-platform-cli/#authentication
