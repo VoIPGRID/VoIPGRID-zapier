@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "lodash": "4.17.11",
-    "zapier-platform-cli": "^7.5.0",
-    "zapier-platform-core": "7.5.0"
+    "zapier-platform-cli": "^7.6.0",
+    "zapier-platform-core": "7.6.0"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
