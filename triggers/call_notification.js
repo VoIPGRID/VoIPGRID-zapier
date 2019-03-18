@@ -31,6 +31,7 @@ const callNotification = {
   },
   direction: 'inbound',
   status: 'ringing',
+  reason: '',
   timestamp: '2017-01-01T01:00:00+00:00',
   version: 'v2',
 };
@@ -198,6 +199,10 @@ module.exports = {
       },
       {
         key: 'status',
+        type: 'string',
+      },
+      {
+        key: 'reason',
         type: 'string',
       },
       {
