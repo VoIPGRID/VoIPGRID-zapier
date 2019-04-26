@@ -28,7 +28,7 @@ const addAuthorizationHeader = (request, z, bundle) => {
 const processResponseCode = (response, z, bundle) => {
   z.console.log(`processResponseCode status: ${response.status}`);
   if (bundle.authData.token && bundle.authData.email) {
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 201) {
       // Do nothing, this is expected behaviour.
     } else if (response.status === 401) {
       z.console.log('401 Unauthorized status code detected.');
