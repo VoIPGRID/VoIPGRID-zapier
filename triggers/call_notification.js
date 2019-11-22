@@ -32,7 +32,7 @@ const callNotification = {
   direction: 'inbound',
   status: 'ringing',
   reason: '',
-  timestamp: '2017-01-01T01:00:00+00:00',
+  timestamp: '2017-01-01T01:00:00.000000+00:00',
   version: 'v2',
 };
 
