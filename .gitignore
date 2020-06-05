@@ -65,4 +65,4 @@ typings/
 .idea
 
 # docker vscode workdir
-.devcontainer/`
+.devcontainer/
