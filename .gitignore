@@ -63,3 +63,6 @@ typings/
 
 # IDE files.
 .idea
+
+# docker vscode workdir
+.devcontainer/`
