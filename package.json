@@ -1,6 +1,6 @@
 {
   "name": "VoIPGRID",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Zapier integration with the VoIPGRID platform.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "zapier-platform-cli": "10.0.0",
+    "zapier-platform-cli": "^10.0.0",
     "zapier-platform-core": "10.0.0"
   },
   "devDependencies": {
